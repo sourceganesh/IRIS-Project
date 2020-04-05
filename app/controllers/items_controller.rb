@@ -8,15 +8,11 @@ class ItemsController < ApplicationController
   end
 
   def useritem
-    @items = Item.where(:user_id => current_user.id)
+    @items = Item.where(:bid_id => current_user.id, :claim => true)
   end
   # GET /items/1
   # GET /items/1.json
   def show
-    if(@item.deadline <= Time.now)
-      @item.active = false
-      @item.save
-    end
   end
 
   # GET /items/new
@@ -92,19 +88,25 @@ end
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item.destroy
-    if(@item.user_id==current_user.id)
     respond_to do |format|
+    if(@item.user_id==current_user.id)
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
-    end
+      @item.destroy
     else
       format.html { redirect_to @item, notice: 'You cannot destroy this item' }
   end
+end
+end
 
   def claim
     @item = Item.find(params[:id])
     @item.claim = true
+    @item.save
+    respond_to do |format|
+    format.html { redirect_to @item, notice: 'You have claimed the item!' }
+    format.json { render :show, status: :ok, location: @item }
+  end
   end
 
 

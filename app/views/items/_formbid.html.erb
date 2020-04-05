@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :bid %>
-    <%= form.number_field :bid %>
+    <%= form.number_field :bid, min: item.bid %>
   </div>
 
   <div class="actions">

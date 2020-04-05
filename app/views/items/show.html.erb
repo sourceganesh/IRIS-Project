@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -32,14 +31,11 @@
 <p>
   <strong>Posted by</strong>
   <%= User.where(id: @item.user_id).first.email %>
-</p
+</p>
 
-<% if !@item.active %>
-<%= form_with(model: @item, local: true, :url => { :action => :bidupdate }) do |form| %>
-<div class="actions">
-  <%= form.submit value="Claim"%>
-</div>
-<%end%>
+<% if @item.claim %>
+Claimed By:
+<%= User.where(id: @item.bid_id).first.email %>
 <%end%>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
