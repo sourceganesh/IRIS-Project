@@ -2,8 +2,6 @@
 
 <% if current_user%>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-  <%= link_to "Claimed Items", useritem_path %>
-  <%= link_to "Posted Items", biditem_path %>
 <% else %>
     <%= link_to "Sign In", new_user_session_path %>
     <%= link_to "Sign Up", new_user_registration_path %>
@@ -30,7 +28,9 @@
         <td><%= item.deadline %></td>
         <td><%= item.contact %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Bid/Claim', items_bid_path(item) %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Bid', items_bid_path(item) %></td>
 
       </tr>
     <% end %>
@@ -40,3 +40,5 @@
 <br>
 
 <%= link_to 'New Item', new_item_path %>
+
+<%= link_to 'Back', items_path %>

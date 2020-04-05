@@ -36,7 +36,7 @@
 <%= render 'formbid', item: @item %>
 <% else %>
 Bid ended
-<% if @item.bid_id == current_user.id %>
+<% if @item.bid_id == current_user.id && !@item.claim%>
 <%= render 'claim', item: @item %>
 <%end%>
 <%end%>

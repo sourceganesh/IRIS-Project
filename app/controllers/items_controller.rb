@@ -4,11 +4,15 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.where.not(:user_id => current_user.id)
   end
 
   def useritem
     @items = Item.where(:bid_id => current_user.id, :claim => true)
+  end
+
+  def biditem
+    @items = Item.where(:user_id => current_user.id)
   end
   # GET /items/1
   # GET /items/1.json
@@ -22,6 +26,12 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @item = Item.find(params[:id])
+    respond_to do |format|
+    if(@item.user_id!=current_user.id)
+      format.html { redirect_to @item, notice: 'You cannot edit this item' }
+    end
+  end
   end
 
   def bid
