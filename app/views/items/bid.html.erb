@@ -33,4 +33,8 @@
   <%= User.where(id: @item.user_id).first.email %>
 </p>
 
+<%if @item.active %>
 <%= render 'formbid', item: @item %>
+<% else %>
+Bid ended
+<%end%>

@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   resources :items
   devise_for :users
   get 'items/bid/:id', to: 'items#bid', as: :items_bid
+  patch 'items/bidupdate/:id', to: 'items#bidupdate', as: :items_bidupdate
+  patch 'items/claim/:id', to: 'items#claim', as: :items_claim
+  get '/useritem', to: 'items#useritem'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
