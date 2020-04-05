@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<div style="width:400px; height:auto">
+  <%= link_to image_tag(@item.image, style:"width:100%"), items_path%>
+</div>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Bid:</strong>
+  <%= @item.bid %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @item.deadline %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @item.contact %>
+</p>
+
+<p>
+  <strong>Posted by</strong>
+  <%= User.where(id: @item.user_id).first.email %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
