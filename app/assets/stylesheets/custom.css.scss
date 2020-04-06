@@ -26,6 +26,50 @@ $navbar-default-bg: #0A0A0A;
   padding-bottom: 15px !important;
 }
 
+#head{
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
 .center{
   text-align: center;
+}
+
+.card {
+  border: 1px solid #d3d3d3;
+  border-radius: .25rem;
+
+}
+
+.bg-img {
+  background-size: cover;
+  min-height: 180px;
+  background-position: center;
+  background-color: #ccc;
+}
+
+.content {
+  padding: 15px;
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #2196F3;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  border-radius: .25rem;
+}
+
+.grid-container {
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 20px;
+  display: grid;
+}
+
+.right{
+  text-align: right;
+}
+
+.btn{
+  background-color: #000;
 }

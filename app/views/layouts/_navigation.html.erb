@@ -4,9 +4,10 @@
       <%= link_to "BidSite", root_path, class:"navbar-brand", id:"logo"%>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li><%= link_to 'Home', items_path %></li>
       <li> <%= link_to "Claimed Items", useritem_path %></li>
       <li><%= link_to "Posted Items", biditem_path %></li>
+      <li><%= link_to 'New Item', new_item_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <%if !current_user %>

@@ -1,2 +1,6 @@
-<p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+<% if notice %>
+<p class="center notice alert alert-info"><%= notice %></p>
+<%end%>
+<% if alert %>
+<p class="centre alert alert alert-warning"><%= alert %></p>
+<%end%>

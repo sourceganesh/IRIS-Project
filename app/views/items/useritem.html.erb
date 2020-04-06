@@ -1,38 +1,19 @@
+<div class="center jumbotron" id="head">
 <h1>Items</h1>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Bid</th>
-      <th>Deadline</th>
-      <th>Contact</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.description %></td>
-        <td><%= item.bid %></td>
-        <td><%= item.deadline %></td>
-        <td><%= item.contact %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Bid', items_bid_path(item) %></td>
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+</div>
+<div class="right">
+<%= link_to 'Back', items_path, class:"center btn btn-dark" %>
+</div>
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<div class="grid-container"">
+<% @items.each do |item| %>
+<div class="card">
+  <div class="bg-img"><%= link_to image_tag(item.image, style:"width:100%"), items_path%></div>
+  <div class="content">
+    <h4><%=item.title%></h4>
+    <p><%=item.description%></p> <p><%=item.bid%></p> <%= link_to "Show", item, class:"btn btn-dark" %></div>
+</div>
 
-<%= link_to 'Back', items_path %>
+<% end %>
+</div>

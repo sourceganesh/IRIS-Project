@@ -1,3 +1,20 @@
+<div class="right">
+<%= link_to 'Edit', edit_item_path(@item), class:"center btn btn-dark" %> |
+<%= link_to 'Back', items_path, class:"center btn btn-dark" %>
+</div>
+<br>
+
+<div class="card">
+  <h5 class="card-header">Item Details:</h5>
+  <div class="card-body">
+    <div class = "row no-glutters">
+      <div class = "column" id="img"></div>
+      <div class = "column" id="img"></div>
+        <h5 class="card-title"><%= @item.title %></h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 
 <p>
   <strong>Title:</strong>
