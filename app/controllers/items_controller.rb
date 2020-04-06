@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    if(current_user)
     @items = Item.where.not(:user_id => current_user.id)
+    else
+    @items = Item.all
+  end
   end
 
   def useritem
