@@ -72,6 +72,11 @@ $navbar-default-bg: #0A0A0A;
 
 .btn{
   background-color: #000;
+  color: #ccc !important;
+}
+
+.btn:hover {
+  color: #fff !important;
 }
 
 #card1 {
