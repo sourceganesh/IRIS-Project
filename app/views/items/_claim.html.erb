@@ -1,5 +1,4 @@
 <%= form_with(model: item, local: true, :url => { :action => :claim }) do |form| %>
 <div class="actions">
-  <%= form.submit value="Claim"%>
-</div>
+<%= form.submit "Claim", class:"btn btn-dark"%></div>
 <%end%>

@@ -1,59 +1,37 @@
 <div class="right">
+<% if(@item.user_id==current_user.id) %>
 <%= link_to 'Edit', edit_item_path(@item), class:"center btn btn-dark" %> |
+<%else%>
+<%= link_to 'Bid|Claim', items_bid_path(@item), class:"btn btn-dark" %> |
+<%end%>
 <%= link_to 'Back', items_path, class:"center btn btn-dark" %>
 </div>
 <br>
 
-<div class="card">
-  <h5 class="card-header">Item Details:</h5>
-  <div class="card-body">
-    <div class = "row no-glutters">
-      <div class = "column" id="img"></div>
-      <div class = "column" id="img"></div>
-        <h5 class="card-title"><%= @item.title %></h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="card" id="card1">
+  <div style="width:400px; height:auto">
+    <%= link_to image_tag(@item.image, style:"width:100%"), items_path%>
   </div>
+  <strong><h3><%= @item.title %></h3></strong>
+  <p><strong>Description</strong><%= @item.description %></p>
+
+  <p class="bid">
+    <strong>Current Bid:</strong><%= @item.bid %></p>
+  <p>
+    <strong>Contact:</strong>
+    <%= @item.contact %>
+  </p>
+  <p>
+    <strong>Deadline:</strong>
+    <%= @item.deadline %>
+  </p>
+  <p>
+    <strong>Posted by</strong>
+    <%= User.where(id: @item.user_id).first.email %>
+  </p>
+
+  <% if @item.claim %>
+  Claimed By:
+  <%= User.where(id: @item.bid_id).first.email %>
+  <%end%>
 </div>
-
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
-
-<div style="width:400px; height:auto">
-  <%= link_to image_tag(@item.image, style:"width:100%"), items_path%>
-</div>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Bid:</strong>
-  <%= @item.bid %>
-</p>
-
-<p>
-  <strong>Deadline:</strong>
-  <%= @item.deadline %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @item.contact %>
-</p>
-
-<p>
-  <strong>Posted by</strong>
-  <%= User.where(id: @item.user_id).first.email %>
-</p>
-
-<% if @item.claim %>
-Claimed By:
-<%= User.where(id: @item.bid_id).first.email %>
-<%end%>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>

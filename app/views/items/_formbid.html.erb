@@ -11,12 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :bid %>
-    <%= form.number_field :bid, min: item.bid %>
+  <div class="form-group row">
+    <label for="Dead" class="col-sm-2 col-form-label">
+    <%= form.label :bid %></label>
+    <div class="col-sm-10">
+    <%= form.number_field :bid, min: item.bid, class:"form-control", id:"Dead", placeholder:"Deadline" %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Bid", class:"btn btn-dark"%>
   </div>
 <% end %>
